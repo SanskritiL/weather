@@ -1,18 +1,38 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>iWeather</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding class="home">
-  <h1 font-weight:bold>Weather App</h1>
+  <h1 font-weight:bold></h1>
   <ion-grid *ngIf="weather">
     <ion-row>
       <ion-col width-50 offset-25>
         <h2 class="location">{{weather.name}}</h2>
-       <div class="icon"><img src="http://openweathermap.org/img/w/{{weather.weather[0].icon}}.png"></div>
-     
-       
+       <div class="icon"><img src="http://openweathermap.org/img/w/{{weather.weather[0].icon}}.png" alt=""></div>
+      <h1 class="temp">{{weather.main.temp}}&deg;</h1>
+      <h1 class="desc">{{weather.weather[0].description}}</h1>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col width=100>
+        <ion-list>
+          <ion-item> <strong>Temp: </strong>{{weather.main.temp}}</ion-item>
+        </ion-list>
+        <ion-list>
+            <ion-item> <strong>Humidity: </strong>{{weather.main.humidity}}</ion-item>
+          </ion-list>
+          <ion-list>
+              <ion-item> <strong>Pressure: </strong>{{weather.main.pressure}}</ion-item>
+            </ion-list>
+            <ion-list>
+                <ion-item> <strong>Visibiltiy: </strong>{{weather.visibility}}</ion-item>
+              </ion-list>
+              <ion-list>
+                  <ion-item> <strong>Description: </strong>{{weather.weather[0].description}}</ion-item>
+                </ion-list>
       </ion-col>
     </ion-row>
   </ion-grid>

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { Storage } from '@ionic/storage';
+import { HomePage } from '../home/home';
 /**
  * Generated class for the SettingsPage page.
  *
@@ -15,11 +16,34 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class SettingsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+city:string;
+
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams,
+    private storage:Storage) {
+
+      this.storage.get('location').then((val) =>{
+    if(val!=null){
+      let location = JSON.parse(val);
+      this.city=location.city;
+    }
+    else{
+      this.city='London';
+    }
+      });
+   
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SettingsPage');
   }
-
+saveForm(){
+  let location = {
+    city:this.city
+  }
+  //console.log(location);
+ this.storage.set('location',JSON.stringify(location));
+ this.navCtrl.push(HomePage);
+}
 }

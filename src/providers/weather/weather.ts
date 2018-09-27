@@ -19,7 +19,7 @@ export class WeatherProvider {
   }
 
 getWeather(city){
-  return this.http.get(this.url+city+'&APPID='+this.apikey);
+  return this.http.get(this.url+city+'&units=metric&APPID='+this.apikey);
 }
   
   
